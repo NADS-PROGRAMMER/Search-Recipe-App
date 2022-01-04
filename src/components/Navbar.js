@@ -6,7 +6,7 @@ import { navVariants } from '../variants/variants'
 function Navbar() {
     return (
         <motion.nav 
-            className="bg-orange-300 flex justify-between px-8 py-4 fixed top-0 right-0 left-0 z-10 lg:px-[8rem]"
+            className="bg-gradient-to-b from-blue-200 to-orange-50 flex justify-between px-8 py-4 fixed top-0 right-0 left-0 z-10 lg:px-[8rem]"
             variants={navVariants}
             initial="initial"
             animate="animate"

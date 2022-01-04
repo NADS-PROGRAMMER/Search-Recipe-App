@@ -26,6 +26,7 @@ const navVariants = {
         duration: 2
     }
 }
+
 const opacityVariants = {
     initial: {
         opacity: 0
@@ -37,8 +38,16 @@ const opacityVariants = {
         duration: 4
     }
 }
+
+const recipeButtonVariants = {
+    hover: {
+        scale: [1, 1.1, 1, 1.1, 1],
+    }
+}
+
 export {
     navVariants,
     titleVariants,
-    opacityVariants
+    opacityVariants,
+    recipeButtonVariants
 }
