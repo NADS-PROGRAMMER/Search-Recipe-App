@@ -2,11 +2,12 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { navVariants } from '../variants/variants'
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 function Navbar() {
     return (
         <motion.nav 
-            className="bg-gradient-to-b from-blue-200 to-orange-50 flex justify-between px-8 py-4 fixed top-0 right-0 left-0 z-10 lg:px-[8rem]"
+            className="bg-gradient-to-b from-blue-200 to-orange-50 flex flex-wrap justify-between px-8 py-4 fixed top-0 right-0 left-0 z-10 lg:px-[8rem]"
             variants={navVariants}
             initial="initial"
             animate="animate"
@@ -18,6 +19,9 @@ function Navbar() {
                 </li>
                 <li className="text-orange-800 font-semibold">
                     <Link to="/about">About</Link>
+                </li>
+                <li className="text-orange-800 font-semibold">
+                    <a href=""><GitHubIcon /></a>
                 </li>
             </ul>
         </motion.nav>

@@ -3,40 +3,42 @@ const titleVariants = {
         x: '-100%'
     },
     animate: {
-        x: 0
+        x: 0,
+        transition: {
+        
+            duration: 2,
+            type: 'spring',
+            stiffness: 350
+        }
     },
-    transition: {
-        mass: 500,
-        duration: 2,
-        type: 'spring',
-        stiffness: 200
-    }
+    
 }
 
 const navVariants = {
 
     initial: {
-        y: '100%'
+        y: '-100%'
     },
     animate: {
-        y: 0
+        y: 0,
+        transition: {
+            type: 'tween',
+            duration: .5
+        }
     },
-    transition: {
-        type: 'tween',
-        duration: 2
-    }
 }
 
 const opacityVariants = {
     initial: {
-        opacity: 0
+        opacity: 0,
     },
     animate: {
-        opacity: 1
+        opacity: 1,
+        transition: {
+            duration: 1
+        }
     },
-    transition: {
-        duration: 4
-    }
+    
 }
 
 const recipeButtonVariants = {
@@ -45,9 +47,33 @@ const recipeButtonVariants = {
     }
 }
 
+const paragraphVariants = {
+
+    initial: {
+        opacity: 0
+    },
+    animate: {
+        opacity: 1,
+        transition: {
+            type: 'spring',
+            stiffness: 300,
+            delay: .7
+        }
+    }
+}
+
+const socialsVariants = {
+
+    whileHover: {
+        scale: 1.3,
+    }
+}
+
 export {
     navVariants,
     titleVariants,
     opacityVariants,
-    recipeButtonVariants
+    recipeButtonVariants,
+    paragraphVariants,
+    socialsVariants
 }

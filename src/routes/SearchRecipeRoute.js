@@ -34,16 +34,24 @@ function SearchRecipeRoute() {
     }, [recipes])
 
     const containerVariants = {
+        animate: {
+            transition: {
+                type: 'tween',
+                when: 'beforeChildren'
+            }
+        },
         exit: {
             x: '-100%',
             transition: {
-                type: 'tween'
+                type: 'tween',
+                when: 'beforeChildren'
             }
-        }
+        },
+        
     }
 
     return (
-        <motion.div className="flex flex-col gap-5 bg-gradient-to-b from-orange-200 to-blue-200 min-h-screen py-[5rem] px-[2rem] lg:px-[8rem]"
+        <motion.div className="flex flex-col gap-5 bg-gradient-to-b from-orange-200 to-blue-200 min-h-screen py-[8rem] px-[2rem] lg:px-[8rem]"
             variants={containerVariants}
             exit="exit"
         >
@@ -96,7 +104,7 @@ function SearchRecipeRoute() {
                     <Recipes recipes={recipes}/> : 
                 query ? 
                     <div className="flex flex-col justify-center items-center h-[10rem]">
-                        <Typography className="text-orange-800" variant="body1" component="h5">
+                        <Typography className="text-orange-800 text-2xl" variant="body1" component="h5">
                             Searching for {query} recipe...
                          </Typography>;
                         <CircularProgress />
