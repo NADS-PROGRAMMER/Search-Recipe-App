@@ -57,7 +57,7 @@ function About() {
                 >
                     You can get:
             </motion.p>
-            
+
             <motion.ul 
                 className="pl-5 text-orange-800 list-disc"
                 variants={paragraphVariants}
@@ -85,16 +85,6 @@ function About() {
                 initial="initial"
                 animate="animate"
                 >
-
-                <section className="flex flex-col items-start mt-10">
-                    <span 
-                        className="relative before:content-[' '] before:block before:absolute before:top-0 before:left-0 before:h-[.09rem] before:bg-orange-800 before:w-[20rem] text-orange-800 font-bold text-center">
-                            Copyright &copy; 2021
-                    </span>
-                    <span className="text-orange-800">
-                        Created by Nads Marcelo
-                    </span>
-                </section>
 
                 <section className="text-orange-800 font-bold mt-8">
                     <span>Let's Connect!</span>
@@ -128,6 +118,15 @@ function About() {
                     </ul>
                 </section>
                 
+                <section className="flex flex-col items-start mt-10">
+                    <span 
+                        className="relative before:content-[' '] before:block before:absolute before:top-0 before:left-0 before:h-[.09rem] before:bg-orange-800 before:max-w-[20rem] before:w-full text-orange-800 font-bold text-center">
+                            Copyright &copy; 2021
+                    </span>
+                    <span className="text-orange-800">
+                        Created by Nads Marcelo
+                    </span>
+                </section>
             </motion.footer>
         </motion.div>
     )

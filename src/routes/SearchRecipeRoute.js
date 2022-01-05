@@ -47,7 +47,6 @@ function SearchRecipeRoute() {
                 when: 'beforeChildren'
             }
         },
-        
     }
 
     return (
@@ -56,6 +55,7 @@ function SearchRecipeRoute() {
             exit="exit"
         >
 
+            {/* Page Title */}
             <motion.h1 className="text-2xl font-medium font-[Poppins] text-orange-800 lg:text-4xl"
                 variants={titleVariants}
                 initial="initial"
@@ -64,6 +64,7 @@ function SearchRecipeRoute() {
                 Find Your Recipe
             </motion.h1>
 
+            {/* Page Form */}
             <motion.form 
                 className="flex items-center gap-2" 
                 onSubmit={(e) => e.preventDefault()}
