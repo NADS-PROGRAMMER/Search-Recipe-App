@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 
 // Custom components
 import Recipes from '../components/Recipes'
@@ -14,10 +14,14 @@ import TextField from '@mui/material/TextField';
 import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 
+// Context
+import { RecipeContext } from '../context/RecipeContext'
+
 function SearchRecipeRoute() {
 
     const [recipes, setRecipes] = useState(null)
     const [query, setQuery] = useState('');
+    const {recipeInfo, setRecipeInfo} = useContext(RecipeContext)
 
     // useEffect for fetching the data
     useEffect(() => {
@@ -101,8 +105,11 @@ function SearchRecipeRoute() {
             {/* RENDER THE LIST OF RECIPES */}
             {
                 recipes ? 
-                    // List of Recipes from an API.
-                    <Recipes recipes={recipes}/> : 
+                    <div className="flex flex-col gap-5">
+                         <h1 className="text-orange-600 text-lg font-semibold">Search Results: </h1>
+                        <Recipes recipes={recipes} setRecipeInfo={setRecipeInfo}/>
+                    </div>
+                     : 
                 query ? 
                     <div className="flex flex-col justify-center items-center h-[10rem]">
                         <Typography className="text-orange-800 text-2xl" variant="body1" component="h5">

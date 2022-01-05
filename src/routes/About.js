@@ -14,11 +14,22 @@ import EmailIcon from '@mui/icons-material/Email';
 function About() {
 
     const containerVariants = {
+        initial: {
+            opacity: 0
+        },
+        animate: {
+            opacity: 1,
+            transition: {
+                type: 'tween',
+                staggerChildren: 12,
+                when: 'beforeChildren'
+            }
+        },
         exit: {
             x: '100%',
             transition: {
                 type: 'tween',
-                when: 'beforeChildren',
+                // staggerChildren: 2
             }
         }
     }
@@ -27,9 +38,12 @@ function About() {
         <motion.div 
             className="flex flex-col gap-5 bg-gradient-to-b from-orange-200 to-blue-200 min-h-screen py-[8rem] px-[2rem] lg:px-[8rem]"
             variants={containerVariants}
+            initial="initial"
+            animate="animate"
             exit="exit"
             >
             
+            {/* About Title */}
             <motion.h1 
                 className="text-2xl font-medium font-[Poppins] text-orange-800 lg:text-4xl"
                 variants={titleVariants}
@@ -52,8 +66,6 @@ function About() {
             <motion.p 
                 className="text-xl text-orange-600"
                 variants={paragraphVariants}
-                initial="initial"
-                animate="animate"
                 >
                     You can get:
             </motion.p>
@@ -61,8 +73,6 @@ function About() {
             <motion.ul 
                 className="pl-5 text-orange-800 list-disc"
                 variants={paragraphVariants}
-                initial="initial"
-                animate="animate"
                 >
                 <li>Chicken Stew</li>
                 <li>Chicken Paprikash</li>
@@ -74,16 +84,12 @@ function About() {
             <motion.p 
                 className="text-xl text-orange-600 lg:max-w-[120ch]"
                 variants={paragraphVariants}
-                initial="initial"
-                animate="animate"
                 >
                     This app also a personal project to practice the new technology that I just learned. The technologies that I used to this are React.js; Framer Motion for the animation library for React; Material and Daisy UI which is for the components of the app.
             </motion.p>
             
             <motion.footer
                 variants={paragraphVariants}
-                initial="initial"
-                animate="animate"
                 >
 
                 <section className="text-orange-800 font-bold mt-8">

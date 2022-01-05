@@ -5,15 +5,10 @@ export const RecipeContext = createContext()
 // This will wrap up all the children components
 export function RecipeProvider(props) {
 
-    const [checkout, setCheckout] = useState({
-
-        subTotal: 0,
-        otherDetails: {},
-        items: []
-    })
+    const [ recipeInfo, setRecipeInfo ] = useState([])
 
     return (
-        <RecipeContext.Provider value={{checkout, setCheckout}}>
+        <RecipeContext.Provider value={{recipeInfo, setRecipeInfo}}>
             {props.children}
         </RecipeContext.Provider>
     )
