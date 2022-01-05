@@ -4,6 +4,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import SearchRecipeRoute from './routes/SearchRecipeRoute'
 import About from './routes/About'
 import { AnimatePresence } from 'framer-motion'
+import { RecipeProvider } from './context/RecipeContext'
 
 function App() {
 
@@ -12,12 +13,14 @@ function App() {
   return (
       <>
         <Navbar />
-        <AnimatePresence>
-          <Routes location={location} key={location.key}>
-            <Route path="/" element={<SearchRecipeRoute />} />
-            <Route path="/about" element={<About />} />
-          </Routes>
-        </AnimatePresence>    
+        <RecipeProvider>
+          <AnimatePresence>
+              <Routes location={location} key={location.key}>
+                <Route path="/" element={<SearchRecipeRoute />} />
+                <Route path="/about" element={<About />} />
+              </Routes>
+          </AnimatePresence> 
+        </RecipeProvider>   
       </>
   )
 }
