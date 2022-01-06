@@ -9,19 +9,24 @@ import { motion } from 'framer-motion'
 import { titleVariants, opacityVariants } from '../variants/variants'
 
 // Material UI Components
+import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import SearchIcon from '@mui/icons-material/Search';
 
 // Context
 import { RecipeContext } from '../context/RecipeContext'
 
 function SearchRecipeRoute() {
 
+    // State that will happen to be filled when the fetch is complete.
     const [recipes, setRecipes] = useState(null)
+
+    // The query that the user types in.
     const [query, setQuery] = useState('');
-    const {recipeInfo, setRecipeInfo} = useContext(RecipeContext)
 
     // useEffect for fetching the data
     useEffect(() => {
@@ -53,12 +58,23 @@ function SearchRecipeRoute() {
         },
     }
 
+    // Custom Button
+    const ColorButton = styled(Button)({
+        color: 'white',
+        backgroundColor: 'black',
+        padding: '0 1rem',
+        '&:hover': {
+            backgroundColor: 'black'
+        }
+    })
+
     return (
-        <motion.div className="flex flex-col gap-5 bg-gradient-to-b from-orange-200 to-blue-200 min-h-screen py-[8rem] px-[2rem] lg:px-[8rem]"
+        <motion.div 
+            className="flex items-center flex-col gap-5 bg-gradient-to-b from-orange-200 to-blue-200 min-h-screen py-[8rem] px-[2rem] lg:px-[8rem]"
             variants={containerVariants}
             exit="exit"
         >
-
+            
             {/* Page Title */}
             <motion.h1 className="text-2xl font-medium font-[Poppins] text-orange-800 lg:text-4xl"
                 variants={titleVariants}
@@ -70,47 +86,37 @@ function SearchRecipeRoute() {
 
             {/* Page Form */}
             <motion.form 
-                className="flex items-center gap-2" 
+                className="flex items-center gap-2 sm:w-[35rem]" 
                 onSubmit={(e) => e.preventDefault()}
                 variants={opacityVariants}
                 initial="initial"
                 animate="animate">
-                <section className="flex flex-col items-start gap-2">
 
-                    <section className="flex gap-3 flex-wrap items-center">
-                        <TextField 
-                            type="text"
-                            value={query} 
-                            onChange={(e) => setQuery(e.target.value)} 
-                            id="standard-basic" 
-                            label="Recipe" 
-                            variant="outlined" />
-
-                        <Button 
-                            type="submit"
-                            onClick={() => { 
+                    <ButtonGroup className="flex justify-center sm:max-w-[35rem] w-full">
+                        <TextField
+                                placeholder='Search...'
+                                value={query} 
+                                onChange={(e) => setQuery(e.target.value)}
+                                variant="outlined"
+                                className="max-w-[30rem] w-full rounded-none bg-slate-100"
+                                 />
+                            
+                        <ColorButton type="submit" onClick={() => { 
                                 setRecipes('')
-                            }} 
-                            variant="contained"
-                            size="large"
-                            >
-                            Search
-                        </Button>
-                    </section>
-                    
-                    
-                </section>
+                            }}> <SearchIcon /> </ColorButton>
+                    </ButtonGroup>
             </motion.form>
             
             {/* RENDER THE LIST OF RECIPES */}
             {
                 recipes ? 
-                    <div className="flex flex-col gap-5">
-                         <h1 className="text-orange-600 text-lg font-semibold">Search Results: </h1>
-                        <Recipes recipes={recipes} setRecipeInfo={setRecipeInfo}/>
+                    <div className="flex flex-col gap-5 mt-5">
+                        {/* Pass the 'recipes' state. */}
+                        <Recipes recipes={recipes} />
                     </div>
                      : 
                 query ? 
+                    /** When the data is not yet fetched, the loading indicator will going to shown first. */
                     <div className="flex flex-col justify-center items-center h-[10rem]">
                         <Typography className="text-orange-800 text-2xl" variant="body1" component="h5">
                             Searching for {query} recipe...
