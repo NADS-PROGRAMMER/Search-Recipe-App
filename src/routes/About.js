@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 // Variants for Framer Motion
 import {titleVariants, paragraphVariants, socialsVariants} from '../variants/variants'
@@ -13,6 +13,11 @@ import EmailIcon from '@mui/icons-material/Email';
 
 function About() {
 
+    useEffect(() => {
+
+        window.scrollTo(0, 0);
+    }, [])
+    
     const containerVariants = {
         initial: {
             opacity: 0
