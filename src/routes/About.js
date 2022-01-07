@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useContext} from 'react'
 
 // Variants for Framer Motion
 import {titleVariants, paragraphVariants, socialsVariants} from '../variants/variants'
@@ -10,12 +10,19 @@ import {motion} from 'framer-motion'
 import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
+import GitHubIcon from '@mui/icons-material/GitHub';
+
+// Context
+import { RecipeContext } from '../context/RecipeContext'
 
 function About() {
+
+    const { setModalOpen } = useContext(RecipeContext)
 
     useEffect(() => {
 
         window.scrollTo(0, 0);
+        setModalOpen(false);
     }, [])
     
     const containerVariants = {
@@ -104,8 +111,9 @@ function About() {
                             variants={socialsVariants}
                             whileHover="whileHover"
                             >
-                            <a href=""
-                                
+                            <a 
+                                href="https://twitter.com/NadsMarcelo"
+                                target="_blank"
                                 >
                                 <TwitterIcon className="text-orange-800" />
                             </a>
@@ -114,7 +122,9 @@ function About() {
                             variants={socialsVariants}
                             whileHover="whileHover"
                             >
-                            <motion.a href="">
+                            <motion.a 
+                                    href="https://www.linkedin.com/in/adrian-marcelo-aaa19b228/"
+                                    target="_blank">
                                 <LinkedInIcon className="text-orange-800" />
                             </motion.a>
                         </motion.li>
@@ -122,8 +132,10 @@ function About() {
                             variants={socialsVariants}
                             whileHover="whileHover"
                             >
-                            <motion.a href="">
-                                <EmailIcon className="text-orange-800" />
+                            <motion.a 
+                                    href="https://github.com/NADS-PROGRAMMER/Search-Recipe-App" 
+                                    target="_blank">
+                                <GitHubIcon className="text-orange-800" />
                             </motion.a>
                         </motion.li>
                     </ul>

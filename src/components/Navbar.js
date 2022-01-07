@@ -21,7 +21,10 @@ function Navbar() {
                     <Link to="/about">About</Link>
                 </li>
                 <li className="text-orange-800 font-semibold">
-                    <a href=""><GitHubIcon /></a>
+                    <a  href="https://github.com/NADS-PROGRAMMER/Search-Recipe-App" 
+                        target="_blank">
+                        <GitHubIcon />
+                    </a>
                 </li>
             </ul>
         </motion.nav>
