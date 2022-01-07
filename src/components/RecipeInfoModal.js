@@ -7,13 +7,9 @@ import Ingredients from '../recipe-info-components/Ingredients'
 
 function RecipeInfoModal() {
 
-    const { recipeInfo, setRecipeInfo, isModalOpen, setModalOpen } = useContext(RecipeContext)
+    const { recipeInfo, setRecipeInfo, isModalOpen, setModalOpen, isMobileScreen } = useContext(RecipeContext)
     const [expanded, setExpanded] = useState(false)
 
-    useEffect(() => {
-        console.log(window.innerWidth)
-    })
-    
     return (
         <AnimatePresence initial={false}>
 
@@ -36,9 +32,9 @@ function RecipeInfoModal() {
                             className="w-full py-[1rem] px-[2rem] flex flex-col gap-3 bg-gradient-to-b from-orange-200 to-blue-200 max-h-[30rem] overflow-y-auto lg:max-h-[100%] scroll-smooth rounded-2xl lg:max-w-[32rem]"
                             onClick={(e) => e.stopPropagation()} 
                             variants={modalVariant}
-                            initial="initial"
+                            initial={isMobileScreen ? "mobileInitial" : "initial"}
                             animate="animate"
-                            exit="exit"
+                            exit={ isMobileScreen ? "mobileInitial" : "exit" }
                             >
 
                             <hr className="border-2 border-orange-500 max-w-[3rem] w-[3rem] mx-auto"/>

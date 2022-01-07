@@ -90,6 +90,9 @@ const modalVariant = {
     initial: {
         y: '-100vh'
     },
+    mobileInitial: {
+        y: '100vh'
+    },
     animate: {
         y: 0,
         transition: {
