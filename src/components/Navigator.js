@@ -14,9 +14,9 @@ function Navigator() {
         })
     }
 
-    const scrollUp = () => {
-        window.scroll({
-            top: -document.body.getBoundingClientRect().height,
+    const scroll = (scrollAmount) => {
+        window.scrollTo({
+            top: scrollAmount,
             left: 0,
             behavior: 'smooth',
         })
@@ -24,13 +24,14 @@ function Navigator() {
 
     const actions = [
         {
-            icon: <ArrowDropDownCircleIcon 
-            onClick={scrollDown}/>, 
-            name: 'Go Down'
+            icon: <ArrowDropDownCircleIcon />, 
+            name: 'Go Down',
+            scrollAmount: document.body.getBoundingClientRect().height + document.body.getBoundingClientRect().bottom
         },
         {
-            icon: <ArrowDropDownCircleIcon onClick={scrollUp} className="transform rotate-180"/>, 
-            name: 'Go Up'
+            icon: <ArrowDropDownCircleIcon className="transform rotate-180"/>, 
+            name: 'Go Up',
+            scrollAmount: 0
         },
     ]
     
@@ -41,15 +42,16 @@ function Navigator() {
                 ariaLabel="Speed Dial"
                 icon={<SettingsIcon />}
                 >
-                {
-                    actions.map(action => {
-                        return (<SpeedDialAction
-                            key={action.name}
-                            icon={action.icon}
-                            tooltipTitle={action.name}
-                        />)
-                    })
-                }
+                <SpeedDialAction
+                            onClick={() => scroll(document.body.getBoundingClientRect().height)}
+                            key={actions[0].name}
+                            icon={actions[0].icon}
+                            tooltipTitle={actions[0].name} />
+                <SpeedDialAction
+                            onClick={() => scroll(-document.body.getBoundingClientRect().height)}
+                            key={actions[1].name}
+                            icon={actions[1].icon}
+                            tooltipTitle={actions[1].name} />
             </SpeedDial>
         </div>
     )

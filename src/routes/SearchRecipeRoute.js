@@ -137,7 +137,6 @@ function SearchRecipeRoute() {
                         <h1 
                             onClick={() => { 
 
-                                console.log('FETCHING NEXT')
                                 fetchNextDatas();
                             }}
                             className="text-orange-900 font-[Helvetica] font-semibold text-lg cursor-pointer">
@@ -148,9 +147,9 @@ function SearchRecipeRoute() {
                 query && isSubmitted ? 
                     /** When the data is not yet fetched, the loading indicator will going to shown first. */
                     <div className="flex flex-col justify-center items-center h-[10rem]">
-                        <Typography className="text-orange-800 text-2xl" variant="body1" component="h5">
+                        <h5 className="text-orange-800 text-lg text-center font-medium" >
                             Searching for {query} recipe...
-                         </Typography>;
+                         </h5>
                         <CircularProgress />
                     </div> : 
                 <h1></h1>

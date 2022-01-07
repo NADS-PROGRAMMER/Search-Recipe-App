@@ -91,7 +91,7 @@ const modalVariant = {
         y: '-100vh'
     },
     mobileInitial: {
-        y: '100vh'
+        y: '100vh',
     },
     animate: {
         y: 0,

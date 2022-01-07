@@ -29,7 +29,7 @@ function RecipeInfoModal() {
                     
                     {/* MODAL */}
                     <motion.div
-                            className="w-full py-[1rem] px-[2rem] flex flex-col gap-3 bg-gradient-to-b from-orange-200 to-blue-200 max-h-[30rem] overflow-y-auto lg:max-h-[100%] scroll-smooth rounded-2xl lg:max-w-[32rem]"
+                            className="w-full py-[1rem] px-[2rem] flex flex-col gap-3 bg-gradient-to-b from-orange-200 to-blue-200 max-h-[30rem] overflow-y-auto lg:max-h-[100%] scroll-smooth rounded-[1rem_1rem_0_0] lg:rounded-2xl lg:max-w-[32rem]"
                             onClick={(e) => e.stopPropagation()} 
                             variants={modalVariant}
                             initial={isMobileScreen ? "mobileInitial" : "initial"}

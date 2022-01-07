@@ -34,7 +34,7 @@ function Recipes({ recipes }) {
                                 {/* Recipe Photo */}
                                 <figure className="group">
                                     {/* max-h-[15rem] */}
-                                    <img className="aspect-square object-contain" loading="lazy" src={recipe.recipe.images.REGULAR && recipe.recipe.images.REGULAR.url} />
+                                    <img className="aspect-square object-contain" src={recipe.recipe.images.REGULAR && recipe.recipe.images.REGULAR.url} />
                                     <span 
                                     className="opacity-1 transition-all group-focus:opacity-100 lg:opacity-0 group-hover:opacity-100 px-5 text-center text-lg font-bold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-orange-300">
                                         {recipe.recipe.label}
