@@ -13,7 +13,7 @@ function Navbar() {
             animate="animate"
         >
             <h3 className="font-bold text-orange-700 text-lg">Food API</h3>
-            <ul className="flex gap-5">
+            <ul className="flex gap-8">
                 <li className="text-orange-800 font-semibold">
                     <Link to="/">Search</Link>
                 </li>
