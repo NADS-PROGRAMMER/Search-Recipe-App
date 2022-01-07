@@ -2,6 +2,7 @@ import React, {useState, useEffect, useContext} from 'react'
 
 // Custom components
 import Recipes from '../components/Recipes'
+import Navigator from '../components/Navigator'
 
 // Framer Motion Library
 import { motion } from 'framer-motion'
@@ -48,11 +49,6 @@ function SearchRecipeRoute() {
         setNextLink(data['_links']['next']['href'])
         setRecipes([...recipes, ...data.hits])
     }
-    // FOR TESTING
-    useEffect(() => {
-        console.log(recipes)
-        console.log(nextLink)
-    }, [recipes])
 
     const containerVariants = {
         animate: {
@@ -159,7 +155,7 @@ function SearchRecipeRoute() {
                     </div> : 
                 <h1></h1>
             }
-            
+            <Navigator />
         </motion.div> 
     )
 }
