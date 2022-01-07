@@ -21,6 +21,7 @@ function About() {
 
     useEffect(() => {
 
+        document.title = 'Food API | About'
         window.scrollTo(0, 0);
         setModalOpen(false);
     }, [])

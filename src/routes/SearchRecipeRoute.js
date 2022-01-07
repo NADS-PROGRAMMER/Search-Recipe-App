@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react'
+import React, {useState, useEffect} from 'react'
 
 // Custom components
 import Recipes from '../components/Recipes'
@@ -14,7 +14,6 @@ import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import CircularProgress from '@mui/material/CircularProgress';
-import Typography from '@mui/material/Typography';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import SearchIcon from '@mui/icons-material/Search';
 
@@ -30,7 +29,9 @@ function SearchRecipeRoute() {
     const [query, setQuery] = useState('');
     const [isSubmitted, setSubmitted] = useState(false);
 
-    // const myResizeState = useResize()
+    useEffect(() => {
+        document.title = 'Food API | Search'
+    }, [])
 
     const fetchData = async () => {
 
