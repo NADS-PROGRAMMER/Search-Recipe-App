@@ -28,6 +28,7 @@ function SearchRecipeRoute() {
     // The query that the user types in.
     const [query, setQuery] = useState('');
     const [isSubmitted, setSubmitted] = useState(false);
+    const [isLoadMoreSelected, setLoadMoreSelected] = useState(false)
 
     useEffect(() => {
         document.title = 'Food API | Search'
@@ -49,6 +50,7 @@ function SearchRecipeRoute() {
 
         setNextLink(data['_links']['next']['href'])
         setRecipes([...recipes, ...data.hits])
+        setLoadMoreSelected(false)
     }
 
     const containerVariants = {
@@ -137,11 +139,12 @@ function SearchRecipeRoute() {
                         <Recipes recipes={recipes} />
                         <h1 
                             onClick={() => { 
-
+                                
                                 fetchNextDatas();
+                                setLoadMoreSelected(true)
                             }}
                             className="text-orange-900 font-[Helvetica] font-semibold text-lg cursor-pointer">
-                            Load More
+                            {isLoadMoreSelected ? "Loading..." : "Load More"}
                         </h1>
                     </div>
                      : 
