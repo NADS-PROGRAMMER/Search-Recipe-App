@@ -10,8 +10,7 @@ const titleVariants = {
             type: 'spring',
             stiffness: 350
         }
-    },
-    
+    }
 }
 
 const navVariants = {
@@ -25,7 +24,7 @@ const navVariants = {
             type: 'tween',
             duration: .5
         }
-    },
+    }
 }
 
 const opacityVariants = {
@@ -37,8 +36,7 @@ const opacityVariants = {
         transition: {
             duration: 1
         }
-    },
-    
+    }
 }
 
 const recipeButtonVariants = {
@@ -69,11 +67,52 @@ const socialsVariants = {
     }
 }
 
+const backdropVariant = {
+    initial: {
+        opacity: 0,
+    },
+    animate: {
+        opacity: 1,
+        transition: {
+            duration: .3
+        }
+    },
+    exit: {
+        opacity: 0,
+        transition: {
+            duration: .5,
+            when: 'afterChildren'
+        }
+    }
+}
+
+const modalVariant = {
+    initial: {
+        y: '-100vh'
+    },
+    animate: {
+        y: 0,
+        transition: {
+            duration: .5,
+            type: 'spring'
+        }
+    },
+    exit: {
+        y: '-100vh',
+        transition: {
+            duration: .5,
+            type: 'spring'
+        }
+    }
+}
+
 export {
     navVariants,
     titleVariants,
     opacityVariants,
     recipeButtonVariants,
     paragraphVariants,
-    socialsVariants
+    socialsVariants,
+    backdropVariant,
+    modalVariant
 }
