@@ -4,6 +4,7 @@ import { RecipeContext } from '../context/RecipeContext'
 import { backdropVariant, modalVariant } from '../variants/variants'
 import Nutritions from '../recipe-info-components/Nutritions'
 import Ingredients from '../recipe-info-components/Ingredients'
+import CloseIcon from '@mui/icons-material/Close'
 
 function RecipeInfoModal() {
 
@@ -36,11 +37,22 @@ function RecipeInfoModal() {
                             animate="animate"
                             exit={ isMobileScreen ? "mobileInitial" : "exit" }
                             >
-
-                            <hr className="border-2 border-orange-500 max-w-[3rem] w-[3rem] mx-auto"/>
+                            
+                            <section className="flex items-center">
+                                <hr className="border-2 border-orange-500 max-w-[3rem] w-[3rem] mx-auto"/>
+                                
+                                <a  onClick={() => {
+                                    setExpanded(false); // set the nutrition section closed.
+                                    setModalOpen(false) // close the modal
+                                }}
+                                    className="fixed right-[25px] top-[15px] p-[.2rem] hover:bg-orange-300 transition-all rounded-full">
+                                    <CloseIcon className="text-orange-800  cursor-pointer " sx={{fontSize: 30}}/>
+                                </a>
+                            </section>
+                            
 
                             {/* Recipe Name */}
-                            <section className="flex flex-col gap-2">
+                            <section className="flex flex-col gap-2 pt-5">
                                 <h2 className="text-orange-900 font-bold text-xl font-['Helvetica']">{recipeInfo.recipe.label}</h2>
                                 <hr className="border-2 border-orange-500 max-w-[4rem]"/>
                             </section>
@@ -52,13 +64,12 @@ function RecipeInfoModal() {
                                 <Nutritions expanded={expanded} setExpanded={setExpanded} nutrients={recipeInfo.recipe.totalNutrients}/>
                             </section>
 
-                            <div className="modal-action">
+                            {/* <div className="modal-action">
                                 <label onClick={() => {
-                                    setExpanded(false); // set the nutrition section closed.
-                                    setModalOpen(false) // close the modal
                                     
-                                }} htmlFor="" className="btn bg-orange-500 border-none hover:bg-orange-400">Close</label>
-                            </div>
+                                    
+                                }} htmlFor="" className="btn bg-orange-500 border-none hover:bg-orange-400 ">Close</label>
+                            </div> */}
                         </motion.div> 
                 </motion.div> }
             </AnimatePresence>

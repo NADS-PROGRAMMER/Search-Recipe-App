@@ -19,7 +19,7 @@ function Nutritions({ nutrients, expanded, setExpanded }) {
     }
 
     return (
-        <motion.div className={`rounded-[0_0_25px_25px] flex flex-col gap-2 relative ${!expanded  && `max-h-[16rem] overflow-hidden `}`}>
+        <motion.div className={`rounded-[0_0_25px_25px] flex flex-col gap-2 relative ${!expanded  && `max-h-[15rem] overflow-hidden `}`}>
 
             {/* Title Section */}
             <section className="flex justify-between items-center">
