@@ -29,9 +29,11 @@ function SearchRecipeRoute() {
     const [query, setQuery] = useState('');
     const [isSubmitted, setSubmitted] = useState(false);
     const [isLoadMoreSelected, setLoadMoreSelected] = useState(false)
+    const [isNoLoadMore, setNoLoadMore] = useState(false)
 
     useEffect(() => {
         document.title = 'Food API | Search'
+        setNoLoadMore(false)
     }, [])
 
     const fetchData = async () => {
@@ -48,9 +50,17 @@ function SearchRecipeRoute() {
         const res = await fetch(nextLink)
         const data = await res.json()
 
-        setNextLink(data['_links']['next']['href'])
-        setRecipes([...recipes, ...data.hits])
+        console.log(data['_links'])
+
+        if (data['_links']['next']) {
+            setNextLink(data['_links']['next']['href'])
+            setRecipes([...recipes, ...data.hits])
+        } else {
+            setNoLoadMore(true)
+        }
         setLoadMoreSelected(false)
+
+
     }
 
     const containerVariants = {
@@ -102,6 +112,7 @@ function SearchRecipeRoute() {
                     e.preventDefault()
 
                     setSubmitted(true)
+                    setNoLoadMore(false)
                 }}
                 variants={opacityVariants}
                 initial="initial"
@@ -137,7 +148,7 @@ function SearchRecipeRoute() {
                     <div className="flex items-center flex-col gap-8 mt-5">
                         {/* Pass the 'recipes' state. */}
                         <Recipes recipes={recipes} />
-                        <h1 
+                        {!isNoLoadMore ? <h1 
                             onClick={() => { 
                                 
                                 fetchNextDatas();
@@ -145,7 +156,8 @@ function SearchRecipeRoute() {
                             }}
                             className="text-orange-900 font-[Helvetica] font-semibold text-lg cursor-pointer">
                             {isLoadMoreSelected ? "Loading..." : "Load More"}
-                        </h1>
+                        </h1> : 
+                            <h1 className="text-orange-900 font-[Helvetica] font-semibold text-lg">End of recipes</h1>}
                     </div>
                      : 
                 query && isSubmitted ? 
