@@ -73,14 +73,14 @@ function About() {
                 animate="animate"
                 >
 
-                This is a simple app that enables the user to find a specific recipe for a certain ingredient. It will give you the ingredients, cuisine types, meal types and total nutrients of the selected recipe. It uses <a className="font-semibold text-orange-800 italic" href="https://developer.edamam.com/edamam-docs-recipe-api" target="_blank">Edamam Recipe Search API</a>. One of the examples of it is when you search for the <em>'Chicken'</em> recipes:
+                This is a simple app that enables the user to find a specific recipe. It can be a Filipino recipes, Italian recipes, etc. This app also gives the user an information about ingredients, diet labels, cuisine type, meal type, dish type and nutritions for a specific recipe. It uses <a className="font-semibold text-orange-800 italic" href="https://developer.edamam.com/edamam-docs-recipe-api" target="_blank">Edamam Recipe Search API</a>. One of the examples of it is when you type the word <em>'Chicken'</em>:
             </motion.p>
 
             <motion.p 
                 className="text-xl text-orange-600"
                 variants={paragraphVariants}
                 >
-                    You can get:
+                    You can get recipes such as:
             </motion.p>
 
             <motion.ul 
@@ -98,7 +98,7 @@ function About() {
                 className="text-xl text-orange-600 lg:max-w-[120ch]"
                 variants={paragraphVariants}
                 >
-                    This app also a personal project to practice the new technology that I just learned. The technologies that I used to this are React.js; Framer Motion for the animation library for React; Material and Daisy UI which is for the components of the app.
+                    This app is a personal project to implement the technologies that I currently know such as React.js, TailwindCSS, DaisyUI components library, Framer Motion which is an animation library, and Material UI.
             </motion.p>
             
             <motion.footer
@@ -145,9 +145,9 @@ function About() {
                 <section className="flex flex-col items-start mt-10">
                     <span 
                         className="relative before:content-[' '] before:block before:absolute before:top-0 before:left-0 before:h-[.09rem] before:bg-orange-800 before:max-w-[20rem] before:w-full text-orange-800 font-bold text-center">
-                            Copyright &copy; 2021
+                            Copyright &copy; {new Date(Date.now()).getFullYear()}
                     </span>
-                    <span className="text-orange-800">
+                    <span className="text-orange-800 font-semibold">
                         Created by Nads Marcelo
                     </span>
                 </section>
