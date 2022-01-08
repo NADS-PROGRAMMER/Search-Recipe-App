@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { RecipeContext } from '../context/RecipeContext'
 import { backdropVariant, modalVariant } from '../variants/variants'
@@ -16,7 +16,7 @@ import CloseIcon from '@mui/icons-material/Close'
 
 function RecipeInfoModal() {
 
-    const { recipeInfo, setRecipeInfo, isModalOpen, setModalOpen, isMobileScreen } = useContext(RecipeContext)
+    const { recipeInfo, isModalOpen, setModalOpen, isMobileScreen } = useContext(RecipeContext)
     const [expanded, setExpanded] = useState(false)
 
     return (

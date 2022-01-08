@@ -6,14 +6,6 @@ import ArrowDropDownCircleIcon from '@mui/icons-material/ArrowDropDownCircle';
 
 function Navigator() {
 
-    const scrollDown = () => {
-        window.scroll({
-            top: document.body.getBoundingClientRect().height,
-            left: 0,
-            behavior: 'smooth',
-        })
-    }
-
     const scroll = (scrollAmount) => {
         window.scrollTo({
             top: scrollAmount,
