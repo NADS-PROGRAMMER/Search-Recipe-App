@@ -30,19 +30,28 @@ function SearchRecipeRoute() {
     const [isSubmitted, setSubmitted] = useState(false);
     const [isLoadMoreSelected, setLoadMoreSelected] = useState(false)
     const [isNoLoadMore, setNoLoadMore] = useState(false)
+    const [isError, setError] = useState(false)
 
     useEffect(() => {
         document.title = 'Food API | Search'
         setNoLoadMore(false)
+        setError(false)
     }, [])
 
     const fetchData = async () => {
 
-        const res = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=52dbab2c&app_key=b70e72dff2f60851a6f8165cc4043b14`)
-        const data = await res.json()
+        try {
 
-        setNextLink(data['_links']['next']['href'])
-        setRecipes(data.hits)
+            const res = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=52dbab2c&app_key=b70e72dff2f60851a6f8165cc4043b14`)
+            const data = await res.json()
+
+            if (data) {
+                setNextLink(data['_links']['next']['href'])
+                setRecipes(data.hits)
+            }
+        } catch (_error) {
+            setError(true)
+        }
     }
 
     const fetchNextDatas = async () => {
@@ -113,6 +122,7 @@ function SearchRecipeRoute() {
 
                     setSubmitted(true)
                     setNoLoadMore(false)
+                    setError(false)
                 }}
                 variants={opacityVariants}
                 initial="initial"
@@ -121,11 +131,13 @@ function SearchRecipeRoute() {
                     <ButtonGroup className="flex justify-center sm:max-w-[35rem] w-full">
                         <TextField
                                 placeholder='Search...'
+                                required={true}
                                 value={query} 
                                 onChange={(e) => {
                                     setQuery(e.target.value)
                                     setRecipes(null)
                                     setSubmitted(false)
+                                    setError(false)
                                 }}
                                 variant="outlined"
                                 className="max-w-[30rem] w-full rounded-none bg-slate-100"
@@ -134,8 +146,8 @@ function SearchRecipeRoute() {
                         <ColorButton 
                                 type="submit" 
                                 onClick={() => { 
-                                // setRecipes('')
-                                fetchData()
+                                if (query)
+                                    fetchData()
                             }}> 
                             <SearchIcon /> 
                         </ColorButton>
@@ -159,7 +171,7 @@ function SearchRecipeRoute() {
                         </h1> : 
                             <h1 className="text-orange-900 font-[Helvetica] font-semibold text-lg">End of recipes</h1>}
                     </div>
-                     : 
+                     : isError ? <h1 className="text-orange-800 text-lg text-center font-bold">Ooops! Looks like we don't have that recipe!</h1> :
                 query && isSubmitted ? 
                     /** When the data is not yet fetched, the loading indicator will going to shown first. */
                     <div className="flex flex-col justify-center items-center h-[10rem]">
