@@ -1,10 +1,11 @@
 import React from 'react'
+import SectionFormat from './SectionFormat'
 
-function DietLabels() {
+function DietLabels({ dietLabels }) {
     return (
-        <div>
-            
-        </div>
+        <>
+            <SectionFormat sectionTitle="Diet Labels" list={dietLabels}/>
+        </>
     )
 }
 

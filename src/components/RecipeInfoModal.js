@@ -2,8 +2,16 @@ import React, { useState, useEffect, useContext } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { RecipeContext } from '../context/RecipeContext'
 import { backdropVariant, modalVariant } from '../variants/variants'
+
+// Recipe Components
 import Nutritions from '../recipe-info-components/Nutritions'
 import Ingredients from '../recipe-info-components/Ingredients'
+import DietLabels from '../recipe-info-components/DietLabels'
+import CuisineType from '../recipe-info-components/CuisineType'
+import MealType from '../recipe-info-components/MealType'
+import DishType from '../recipe-info-components/DishType'
+
+// Material UI Icon
 import CloseIcon from '@mui/icons-material/Close'
 
 function RecipeInfoModal() {
@@ -61,6 +69,10 @@ function RecipeInfoModal() {
                             <section className="flex flex-col gap-5">
                                 
                                 <Ingredients ingredients={recipeInfo.recipe.ingredients}/>
+                                <DietLabels dietLabels={recipeInfo.recipe.dietLabels} />
+                                <CuisineType cuisineType={recipeInfo.recipe.cuisineType} />
+                                <MealType mealType={recipeInfo.recipe.mealType} />
+                                <DishType dishType={recipeInfo.recipe.dishType} />
                                 <Nutritions expanded={expanded} setExpanded={setExpanded} nutrients={recipeInfo.recipe.totalNutrients}/>
                             </section>
 
