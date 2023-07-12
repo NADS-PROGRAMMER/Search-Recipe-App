@@ -59,7 +59,7 @@ function SearchRecipeRoute() {
         const res = await fetch(nextLink)
         const data = await res.json()
 
-        console.log(data['_links'])
+        // console.log(data['_links'])
 
         if (data['_links']['next']) {
             setNextLink(data['_links']['next']['href'])
